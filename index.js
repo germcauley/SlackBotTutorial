@@ -32,15 +32,15 @@ function getLocStatus() {
 
 function axiosTest () {
     var url = "https://slack.com/api/users.list?token=xoxb-258246538437-726161173040-mZLuO53L0EFXcYUuO8KcjTwZ&pretty=1";
-    var strr = [];
        axios.get(url)
       .then(function(response){
-             return response.data.json
+          console.log(response.data.json)
+             return "response.data.json"
        })
        .catch(function(error){
               console.log(error);
           });
-      return 
+      
 }   
 
 
@@ -95,10 +95,9 @@ function sayHelp() {
 function showStatus() {
 
     status = axiosTest();
-
     console.log(status);
     bot.postMessageToChannel(
         'general',
-        status
+        'message from API'
     );
 }
