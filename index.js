@@ -9,54 +9,34 @@ const bot = new SlackBot({
   name: "SlackAppTut"
 });
 
-// var url = "https://slack.com/api/users.list?token=xoxb-258246538437-726161173040-mZLuO53L0EFXcYUuO8KcjTwZ&pretty=1";
-
 //Gets status from slack
-function getLocStatus() {
-  var url =
-    "https://slack.com/api/users.list?token=xoxb-258246538437-726161173040-mZLuO53L0EFXcYUuO8KcjTwZ&pretty=1";
-  axios.get(url).then(function(result) {});
-}
-
-//   x = (response.data.members).length
-//   for(var i=0; i <x; i++){
-//     //   response.data.members[i].name
-//     //   response.data.members[i].profile.status_text
-//     console.log("User: "+ response.data.members[i].name);
-//     t.push("User: "+ response.data.members[i].name);
-//     // return "User: "+ response.data.members[i].name;
-//     console.log("Status: "+response.data.members[i].profile.status_text);
-//   }
 
 function axiosTest() {
-  
-  var url =
-    "https://slack.com/api/users.list?token=xoxb-258246538437-726161173040-mZLuO53L0EFXcYUuO8KcjTwZ&pretty=1";
+  officeCount =0;
+  wfhCount =0;
+  var url ="https://slack.com/api/users.list?token=xoxb-258246538437-726161173040-mZLuO53L0EFXcYUuO8KcjTwZ&pretty=1";
   axios
     .get(url)
     .then(function(res) {
-      console.log(res.data.members[0].name);
-     
+      x = (res.data.members).length
+      for(var i=0; i <x; i++){
+        if(res.data.members[i].profile.status_text == "office"){
+          officeCount+=1;
+        }
+        else if (res.data.members[i].profile.status_text =="wfh"){
+          wfhCount+=1;
+        }
+        // return "User: "+ response.data.members[i].name;
+        console.log("Status: "+res.data.members[i].profile.status_text);
+      }
+    bot.postMessageToChannel("general", "Number of people in office: "+ officeCount.toString());
+    bot.postMessageToChannel("general", "Number of people wfh: "+ wfhCount.toString());
     })
     .catch(function(error) {
       console.log(error);
     });
  
 }
-
-function getDataPromise() {
-    return axios({
-            url: 'https://slack.com/api/users.list?token=xoxb-258246538437-726161173040-mZLuO53L0EFXcYUuO8KcjTwZ&pretty=1',
-            method: 'get',
-            timeout: 8000,
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        })
-       .then(res => res.data.members[0].name)
-       .catch (err => console.error(err))
-    }
-
 
 bot.on("start", () => {
   console.log("starting bot");
@@ -83,7 +63,7 @@ function handleMessage(message) {
     console.log("run help");
     sayHelp();
   } else if (message.includes("status")) {
-    showStatus();
+    axiosTest()
   }
  else if (message.includes("I'm good")) {
     sayGreat()
@@ -95,7 +75,7 @@ bot.on("error", err => {
 });
 
 function sayHi() {
-  bot.postMessageToChannel("general", "Hello, there!");
+  bot.postMessageToChannel("general", "Hello, there Diana!");
   bot.postMessageToChannel("general", "How are you?");
 }
 
@@ -107,12 +87,3 @@ function sayGreat() {
     bot.postMessageToChannel("general", "Thats great! :)");
   }
 
-function showStatus() {
-  
-  var status = getDataPromise()
-  .then(res => console.log(res))
-
-  console.log(status + "in function!!");
-
-  bot.postMessageToChannel("general", "message from API");
-}
