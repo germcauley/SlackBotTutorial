@@ -76,7 +76,7 @@ bot.on("error", err => {
 });
 
 function sayHi() {
-  bot.postMessageToChannel("general", "Hello, there Diana!");
+  bot.postMessageToChannel("general", "Hello, there User");
   bot.postMessageToChannel("general", "How are you?");
 }
 
