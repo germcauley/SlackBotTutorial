@@ -5,7 +5,8 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const bot = new SlackBot({
-  token: "xoxb-258246538437-726161173040-mZLuO53L0EFXcYUuO8KcjTwZ",
+  
+  token: `${process.env.bot_token}`,
   name: "SlackAppTut"
 });
 
@@ -14,7 +15,7 @@ const bot = new SlackBot({
 function axiosTest() {
   officeCount =0;
   wfhCount =0;
-  var url ="https://slack.com/api/users.list?token=xoxb-258246538437-726161173040-mZLuO53L0EFXcYUuO8KcjTwZ&pretty=1";
+  var url =`${process.env.url}`;
   axios
     .get(url)
     .then(function(res) {
@@ -27,7 +28,7 @@ function axiosTest() {
           wfhCount+=1;
         }
         // return "User: "+ response.data.members[i].name;
-        console.log("Status: "+res.data.members[i].profile.status_text);
+        // console.log("Status: "+res.data.members[i].profile.status_text);
       }
     bot.postMessageToChannel("general", "Number of people in office: "+ officeCount.toString());
     bot.postMessageToChannel("general", "Number of people wfh: "+ wfhCount.toString());
