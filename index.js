@@ -28,7 +28,7 @@ function axiosTest() {
           wfhCount+=1;
         }
         // return "User: "+ response.data.members[i].name;
-        // console.log("Status: "+res.data.members[i].profile.status_text);
+        console.log("Run bot");
       }
     bot.postMessageToChannel("general", "Number of people in office: "+ officeCount.toString());
     bot.postMessageToChannel("general", "Number of people wfh: "+ wfhCount.toString());
