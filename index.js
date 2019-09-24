@@ -7,14 +7,15 @@ dotenv.config();
 const bot = new SlackBot({
   
   token: `${process.env.bot_token}`,
-  name: "SlackAppTut"
+  name: "HotDeskBot"
 });
 
 //Gets status from slack
 
-function axiosTest() {
+function reportDesks() {
   officeCount =0;
   wfhCount =0;
+  seatCount =16;
   var url =`${process.env.url}`;
   axios
     .get(url)
@@ -23,15 +24,17 @@ function axiosTest() {
       for(var i=0; i <x; i++){
         if(res.data.members[i].profile.status_text == "office"){
           officeCount+=1;
+          seatCount -=1;
         }
         else if (res.data.members[i].profile.status_text =="wfh"){
           wfhCount+=1;
+          
         }
-        // return "User: "+ response.data.members[i].name;
-        console.log("Run bot");
+        // return "User: "+ response.data.members[i].name;       
       }
     bot.postMessageToChannel("general", "Number of people in office: "+ officeCount.toString());
     bot.postMessageToChannel("general", "Number of people wfh: "+ wfhCount.toString());
+    bot.postMessageToChannel("general", "There are around: "+ seatCount.toString()+" seats free in the office today. ");
     })
     .catch(function(error) {
       console.log(error);
@@ -64,7 +67,7 @@ function handleMessage(message) {
     console.log("run help");
     sayHelp();
   } else if (message.includes("status")) {
-    axiosTest()
+    reportDesks()
   }
  else if (message.includes("I'm good")) {
     sayGreat()
