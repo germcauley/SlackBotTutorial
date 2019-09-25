@@ -8,6 +8,8 @@ dotenv.config();
 const bot = new SlackBot({
   
   token: `${process.env.bot_token}`,
+  
+
   name: "HotDeskBot"
 });
 
@@ -18,6 +20,7 @@ function reportDesks() {
   wfhCount =0;
   seatCount =16;
   var url =`${process.env.url}`;
+
   axios
     .get(url)
     .then(function(res) {
