@@ -6,7 +6,11 @@
   "scripts": {
     "start": "nodemon index.js"
   },
-  "author": "",
+  "engines": {
+    "node": "10."
+  },
+
+  "author": "Gerald McAuley",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.0",
@@ -15,4 +19,5 @@
     "slackbots": "^1.2.0",
     "xmlhttprequest": "^1.8.0"
   }
+  
 }
