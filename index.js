@@ -13,7 +13,7 @@ const bot = new SlackBot({
   name: "HotDeskBot"
 });
 
-//Gets status from slack
+//Gets Desk status from slack
 
 function reportDesks() {
   officeCount =0;
@@ -21,6 +21,7 @@ function reportDesks() {
   seatCount =16;
   var url =`${process.env.url}`;
 
+  //make API request using axios
   axios
     .get(url)
     .then(function(res) {
@@ -70,7 +71,7 @@ function handleMessage(message) {
   } else if (message.includes("help")) {
     console.log("run help");
     sayHelp();
-  } else if (message.includes("status")) {
+  } else if (message.includes("update")) {
     reportDesks()
   }
  else if (message.includes("I'm good")) {
@@ -88,7 +89,7 @@ function sayHi() {
 }
 
 function sayHelp() {
-  bot.postMessageToChannel("general", "How can I help you?");
+  bot.postMessageToChannel("general", "Type '@botname update' to receive info on Desk availability");
 }
 
 function sayGreat() {
