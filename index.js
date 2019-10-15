@@ -37,8 +37,8 @@ function reportDesks() {
         }
         // return "User: "+ response.data.members[i].name;       
       }
-    bot.postMessageToChannel("general", "Number of people in office: "+ officeCount.toString());
-    bot.postMessageToChannel("general", "Number of people wfh: "+ wfhCount.toString());
+    bot.postMessageToChannel("general", "Number of people in office 🏢 : "+ officeCount.toString());
+    bot.postMessageToChannel("general", "Number of people wfh 🏡 : "+ wfhCount.toString());
     bot.postMessageToChannel("general", "There are around: "+ seatCount.toString()+" seats free in the office today. ");
     })
     .catch(function(error) {
@@ -65,13 +65,15 @@ bot.on("message", data => {
 
 // Response Handler
 function handleMessage(message) {
+  console.log(message);
   if (message.includes("hello")) {
     console.log("run sayHi");
     sayHi();
   } else if (message.includes("help")) {
+    console.log(message)
     console.log("run help");
     sayHelp();
-  } else if (message.includes("update")) {
+  } else if (message.includes("update") && !(message.includes("info"))) {
     reportDesks()
   }
  else if (message.includes("I'm good")) {
@@ -85,14 +87,14 @@ bot.on("error", err => {
 
 function sayHi() {
   bot.postMessageToChannel("general", "Hello, there User");
-  bot.postMessageToChannel("general", "How are you?");
+  bot.postMessageToChannel("general", "How are you? 😀");
 }
 
 function sayHelp() {
-  bot.postMessageToChannel("general", "Type '@botname update' to receive info on Desk availability");
+  bot.postMessageToChannel("general", "Type '@hotdeskbot update' to receive info on Desk availability");
 }
 
 function sayGreat() {
-    bot.postMessageToChannel("general", "Thats great! :)");
+    bot.postMessageToChannel("general", "Thats great! 😀:)");
   }
 
