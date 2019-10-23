@@ -7,7 +7,9 @@
 SlackHotDeskBot gets the status of all users i na workspace and outputs the number of people who are currently in 'office' or working from home 'wfh'. It uses the slackbots.js node package 
 https://www.npmjs.com/package/slackbots
 
-![](header.png)
+![GitHub Logo](hotdeskimage.png)
+Format: ![Alt Text](url)
+
 
 ## Getting Started
 
