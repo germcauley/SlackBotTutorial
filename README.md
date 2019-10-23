@@ -5,7 +5,7 @@
 
 [![GitHub forks](https://img.shields.io/github/forks/germcauley/SlackBotTutorial.svg?style=social&label=Fork&maxAge=2592000)](https://GitHub.com/germcauley/SlackBotTutorial/network/)
 
-SlackHotDeskBot gets the status of all users i na workspace and outputs the number of people who are currently in 'office' or working from home 'wfh'. It uses the slackbots.js node package 
+SlackHotDeskBot gets the status of all users in a workspace and outputs the number of people who currently have status set to 'office' or 'wfh' (Working from home) . It uses the slackbots.js node package and axios to make requests to slack API
 https://www.npmjs.com/package/slackbots
 
 
