@@ -1,6 +1,6 @@
 
 # SlackHotDeskBot
-> Slack Bot which gives you the status of users in a workspace
+> Slack Bot which gives you the current status of users in a workspace
 
 [![GitHub forks](https://img.shields.io/github/forks/germcauley/SlackBotTutorial.svg?style=social&label=Fork&maxAge=2592000)](https://GitHub.com/germcauley/SlackBotTutorial/network/)
 
