@@ -1,8 +1,6 @@
-# SlackBotTutorial
-Simple Slack Bot using Node
 
 # SlackHotDeskBot
-> Slack Bot which gives you users status 
+> Slack Bot which gives you the status of users in a workspace
 
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
