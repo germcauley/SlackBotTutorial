@@ -3,27 +3,27 @@
 > Slack Bot which gives you the status of users in a workspace
 
 [![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
 [![Downloads Stats][npm-downloads]][npm-url]
+[![Github all releases](https://img.shields.io/github/downloads/Naereen/StrapDown.js/total.svg)](https://GitHub.com/Naereen/StrapDown.js/releases/)
 
-One to two paragraph statement about your product and what it does.
+SlackHotDeskBot gets the status of all users i na workspace and outputs the number of people who are currently in 'office' or working from home 'wfh'. It uses the slackbots.js node package 
+https://www.npmjs.com/package/slackbots
 
 ![](header.png)
 
-## Installation
+## Getting Started
 
-OS X & Linux:
-
-```sh
-npm install my-crazy-module --save
-```
-
-Windows:
-
-```sh
-edit autoexec.bat
-```
-
+   * Clone/Download project
+   * Create a .env file in the same directory as index.js that looks like this:
+      ```
+         bot_token = MY SLACK BOT TOKEN
+         url = MY SLACK WORKSPACE URL
+      ```
+   * run 
+   ```
+   npm start
+   ```
+   
 ## Usage example
 
 A few motivating and useful examples of how your product can be used. Spice this up with code blocks and potentially more screenshots.
