@@ -42,7 +42,7 @@ function reportDesks() {
     bot.postMessageToChannel("random", "There are around: "+ seatCount.toString()+" seats free in the office today. ");
     })
     .catch(function(error) {
-      console.log(error);
+      // console.log(error);
     });
  
 }
@@ -65,7 +65,7 @@ bot.on("message", data => {
 
 // Response Handler
 function handleMessage(message) {
-  console.log(message);
+  // console.log(message);
   if (message.includes("hello")) {
     console.log("run sayHi");
     sayHi();
@@ -73,7 +73,7 @@ function handleMessage(message) {
     console.log(message)
     console.log("run help");
     sayHelp();
-  } else if (message.includes("update") && !(message.includes("info"))) {
+  } else if (message.includes("desk update") && !(message.includes("info"))) {
     reportDesks();
   }
  else if (message.includes("I'm good")) {
@@ -91,7 +91,7 @@ function sayHi() {
 }
 
 function sayHelp() {
-  bot.postMessageToChannel("random", "Type 'update' in random channel to receive info on Desk availability");
+  bot.postMessageToChannel("random", "Type 'desk update' in random channel to receive info on Desk availability");
 }
 
 function sayGreat() {
