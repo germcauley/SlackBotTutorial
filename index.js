@@ -69,7 +69,11 @@ function handleMessage(message) {
   if (message.includes("hello")) {
     console.log("run sayHi");
     sayHi();
-  } else if (message.includes("help")) {
+  } 
+  else if(message.includes("xxx")){
+    block();
+  }
+  else if (message.includes("help")) {
     console.log(message)
     console.log("run help");
     sayHelp();
@@ -98,3 +102,60 @@ function sayGreat() {
     bot.postMessageToChannel("random", "Thats great! 😀:)");
   }
 
+const weburl = `${process.env.webhookUrl}`;
+const seatlayout = `${process.env.layout}`;
+
+function block(){
+  axios({method:'post',
+        url: weburl,
+        data:{
+          "text": "Would you like to book a desk?",
+    "attachments": [
+        {
+            "text": "Choose a desk",
+            "fallback": "You are unable to choose a seat",
+            "callback_id": "wopr_game",
+            "color": "#3AA3E3",
+            "attachment_type": "default",
+            "actions": [
+                {
+                    "name": "seat",
+                    "text": "1",
+                    "type": "button",
+                    "value": "1"
+                },
+                {
+                    "name": "seat",
+                    "text": "2",
+                    "type": "button",
+                    "value": "2"
+                },
+                {
+                    "name": "seat",
+                    "text": "3",
+                    "style": "danger",
+                    "type": "button",
+                    "value": "3",
+                    "confirm": {
+                        "title": "Are you sure?",
+                        "text": "Wouldn't you prefer to work from home?",
+                        "ok_text": "Yes",
+                        "dismiss_text": "No"
+                    }
+                }
+                ,
+                {
+              "type": "divider"
+                },
+            ]
+        }
+    ]
+        }
+      })
+  .then(function (res) {
+    console.log(res);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
