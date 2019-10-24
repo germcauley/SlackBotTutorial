@@ -43,7 +43,7 @@ function reportDesks() {
       }
       bot.postMessageToChannel("random", "Number of people in office 🏢 : " + officeCount.toString());
       bot.postMessageToChannel("random", "Number of people wfh 🏡 : " + wfhCount.toString());
-      bot.postMessageToChannel("random", "There are around: " + seatCount.toString() + " seats free in the office today. ");
+      bot.postMessageToChannel("random", "Th  ere are around: " + seatCount.toString() + " seats free in the office today. ");
     })
     .catch(function (error) {
       // console.log(error);
