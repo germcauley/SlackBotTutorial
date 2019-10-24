@@ -19,6 +19,11 @@ https://www.npmjs.com/package/slackbots
          bot_token = MY SLACK BOT TOKEN
          url = MY SLACK WORKSPACE URL
       ```
+   * add a bot user to your workspace using the guide here: 
+  ``` 
+  * https://slack.com/intl/en-ie/help/articles/115005265703-create-a-bot-for-your-workspace
+  * https://api.slack.com/bot-users
+```
    * run 
    ```
    npm start
